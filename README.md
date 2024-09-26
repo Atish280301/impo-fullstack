@@ -66,3 +66,33 @@ taskkill /PID 6732 /F
 ```
 
 This command will forcefully terminate the process that is currently using port `8081`. After doing this, you should be able to run your Node.js application again without encountering the `EADDRINUSE` error.
+
+To uninstall an npm package from the command line (cmd), you can use the following command:
+
+```bash
+npm uninstall <package-name>
+```
+
+For example, to uninstall a package called `lodash`, you would run:
+
+```bash
+npm uninstall lodash
+```
+
+### Additional Options:
+- To uninstall a package and remove it from the `dependencies` in your `package.json`:
+  ```bash
+  npm uninstall <package-name> --save
+  ```
+
+- To uninstall a package from `devDependencies`:
+  ```bash
+  npm uninstall <package-name> --save-dev
+  ```
+
+- If you're working globally, and you want to uninstall a globally installed package, you can add the `-g` flag:
+  ```bash
+  npm uninstall -g <package-name>
+  ```
+
+This will remove the specified npm package from your project or globally, depending on the command used.
