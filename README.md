@@ -96,3 +96,31 @@ npm uninstall lodash
   ```
 
 This will remove the specified npm package from your project or globally, depending on the command used.
+
+# This Is For Full Stack Ecommerce Project To Send Mail For Forget password and what to need to change in your sender mail account. IT IS VERY IMPORTANT
+The error message you’re seeing (`Invalid login: 534-5.7.9 Application-specific password required`) is related to Google’s security measures, which prevent unauthorized access to Gmail SMTP by requiring an "App Password" for third-party applications. Here’s how to resolve this issue:
+
+1. **Enable Two-Factor Authentication (2FA)** for your Google account if you haven't already:
+   - Go to [Google Account Security](https://myaccount.google.com/security).
+   - Under the "Signing in to Google" section, enable **2-Step Verification**.
+
+2. **Generate an App Password** specifically for your application:
+   - Once 2FA is enabled, go to [App Passwords](https://myaccount.google.com/apppasswords).
+   - Select an "App" (like Mail) and a "Device" (like Other).
+   - Enter a name, such as "NodeJS ECommerce App," and click "Generate."
+   - Google will provide you with a 16-character password.
+
+3. **Update Your `.env` File**:
+   - Replace the `SMTP_MAIL_PASSWORD` in your `.env` file with the newly generated App Password.
+
+   ```env
+   SMTP_MAIL = "kumarsahuatish@gmail.com"
+   SMTP_MAIL_PASSWORD = "your-app-password-here"
+   ```
+
+4. **Restart Your Node Server** after making the changes to ensure it picks up the new environment variables.
+
+### Why This Works
+Google blocks regular passwords in SMTP connections if 2FA is enabled for security reasons. The App Password bypasses this restriction while still protecting your account, allowing your app to access the Gmail SMTP server securely.
+
+After following these steps, try sending the forget password email again, and it should work without any issues. Let me know if you encounter any more problems!
